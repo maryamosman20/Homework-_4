@@ -1,4 +1,93 @@
-// console.log('This is app.js');
+console.log('This is app.js');
+
+function DrawBargraph(sampleId)
+{
+    console.log(`DrawBargraph(${sampleId})`);
+
+}
+
+function DrawBubblechart(sampleId)
+{
+    console.log(`DrawBubblechart(${sampleId})`);
+}
+
+function ShowMetadat(sampleId)
+{
+    console.log(`ShowMetadata(${sampleId})`);
+}
+
+
+function InitDashboard()
+{
+    console.log(`InitDashboard()`);
+    // initialize the dropdown 
+    let selector = d3.select("#selDataset");
+
+    let url = "https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/14-Interactive-Web-Visualizations/02-Homework/samples.json";
+    d3.json(url).then(data => {
+        console.log("here is the data:", data);
+
+        let sampleNames = data.names;
+        console.log("here are the sample names:", sampleNames);
+
+        //  Populate the dropdown
+        for (let i = 0; i < sampleNames.length; i++) {
+            let sampleId = sampleNames[i];
+            selector.append("option").text(sampleId).property("value", sampleId);
+
+        };
+
+        // read the current value for the dropdown
+        let initialId = selector.property("value");
+        console.log(`initialId = ${initialId}`);
+
+        // Draw the bargrapg for the selected sample id
+        DrawBargraph(initialId);
+
+        // Draw the bubblechar for the selected sample id
+        DrawBubblechart(initialId);
+
+        //  show metadata for the selected sample id
+        ShowMetadat(initialId);
+
+
+
+
+
+    });
+
+}
+InitDashboard();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // const url = "https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/14-Interactive-Web-Visualizations/02-Homework/samples.json";
 

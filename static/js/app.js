@@ -16,6 +16,15 @@ function ShowMetadat(sampleId)
     console.log(`ShowMetadata(${sampleId})`);
 }
 
+function optionChanged(sampleId)
+{
+    console.log(`optionChanged new value: ${sampleId}`);
+    DrawBargraph(sampleId);
+    DrawBubblechart(sampleId);
+    ShowMetadat(sampleId);
+    // drawGauge(sampleId);
+}
+
 
 function InitDashboard()
 {
